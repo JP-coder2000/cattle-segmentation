@@ -39,7 +39,7 @@ Este proyecto sigue la metodología CRISP-DM (Cross-Industry Standard Process fo
 |   |-- split/                   # Contiene el sample del dataset transformado y separado en train, test y validation.
 |   |-- transformed/             # Contiene un sample de las imágenes recortadas y clasificadas.
 |-- source/
-|   |-- classifier.py         # Script clasificador para el dataset original.
+|   |-- classifier.py            # Script clasificador para el dataset original.
 |   |-- data_preparation.ipynb   # Código para la preparación de los datos.
 |   |-- model_training.ipynb     # Notebook con el proceso de entrenamiento del modelo.
 |   |-- analysis.ipynb           # Análisis de resultados y hallazgos.
