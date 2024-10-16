@@ -37,8 +37,8 @@ Este proyecto sigue la metodología CRISP-DM (Cross-Industry Standard Process fo
 |-- dataset/
 |   |-- original/                # Contiene un sample de las imágenes aéreas (1920x1080 px).
 |   |-- transformed/             # Contiene un sample de las imágenes recortadas y clasificadas.
-|-- notebooks/
-|   |-- data_preparation.ipynb   # Código para la preparación y exploración de los datos.
+|-- source/
+|   |-- data_preparation.ipynb   # Código para la preparación de los datos.
 |   |-- model_training.ipynb     # Notebook con el proceso de entrenamiento del modelo.
 |   |-- analysis.ipynb           # Análisis de resultados y hallazgos.
 |-- models/
