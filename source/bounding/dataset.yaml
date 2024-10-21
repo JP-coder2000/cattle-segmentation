@@ -1,0 +1,6 @@
+train: C:/Users/Artur/Desktop/TEC/7mo semestre/TC3007C/cattle-segmentation/dataset/bounding/split/train/  # Path to the training annotations
+val: C:/Users/Artur/Desktop/TEC/7mo semestre/TC3007C/cattle-segmentation/dataset/bounding/split/validation/  # Path to the validation annotations
+test: C:/Users/Artur/Desktop/TEC/7mo semestre/TC3007C/cattle-segmentation/dataset/bounding/split/test/  # Path to the test annotations
+
+nc: 1  # Number of classes
+names: ['cow']  # Class name
