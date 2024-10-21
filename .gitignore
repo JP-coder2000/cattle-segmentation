@@ -1,5 +1,6 @@
 # Dataset
 dataset/
+*.jpg
 
 # Mac
 .DS_Store
