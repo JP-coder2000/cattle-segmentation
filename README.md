@@ -39,7 +39,7 @@ This project follows the CRISP-DM methodology (Cross-Industry Standard Process f
 |   |   |-- original/            # Contains a sample of the aerial images (1920x1080 px) used for the classifier model.
 |   |   |-- split/               # Contains the sample of the dataset split into train, test, and validation.
 |   |   |-- transformed/         # Contains a sample of the cropped and classified images transformed for the classifier model.
-|-- |-- bounding/
+|   |-- bounding/
 |   |   |-- annotations.csv      # Contains all coordenates of the bounding box data for every image in the dataset.
 |   |   |-- original/            # Contains a sample of the aerial images (1920x1080 px) used for the bounding box model.
 |   |   |-- split/               # Contains the sample of the dataset split into train, test, and validation.
