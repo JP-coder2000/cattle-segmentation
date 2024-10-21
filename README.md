@@ -35,9 +35,14 @@ This project follows the CRISP-DM methodology (Cross-Industry Standard Process f
 
 ```bash
 |-- dataset/
-|   |-- original/                # Contains a sample of the aerial images (1920x1080 px).
-|   |-- split/                   # Contains the sample of the dataset split into train, test, and validation.
-|   |-- transformed/             # Contains a sample of the cropped and classified images.
+|   |-- classifier/
+|   |   |-- original/            # Contains a sample of the aerial images (1920x1080 px) used for the classifier model.
+|   |   |-- split/               # Contains the sample of the dataset split into train, test, and validation.
+|   |   |-- transformed/         # Contains a sample of the cropped and classified images transformed for the classifier model.
+|-- |-- bounding/
+|   |   |-- annotations.csv      # Contains all coordenates of the bounding box data for every image in the dataset.
+|   |   |-- original/            # Contains a sample of the aerial images (1920x1080 px) used for the bounding box model.
+|   |   |-- split/               # Contains the sample of the dataset split into train, test, and validation.
 |-- source/
 |   |-- classifier.py            # Classification script for the original dataset.
 |   |-- data_preparation.ipynb   # Code for data preparation.
