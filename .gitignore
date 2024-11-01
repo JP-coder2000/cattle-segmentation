@@ -11,6 +11,9 @@ dataset/classifier/split/train/
 dataset/classifier/split/validation/
 dataset/classifier/transformed/
 
+# Cache
+*.cache
+
 # Mac
 .DS_Store
 
