@@ -1,9 +1,4 @@
-import os
 import torch.nn as nn
-import torch
-import numpy as np
-from torchvision import transforms
-from PIL import Image
 
 class CowClassifier(nn.Module):
     def __init__(self):
