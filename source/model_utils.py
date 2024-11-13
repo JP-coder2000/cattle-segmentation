@@ -86,7 +86,6 @@ def crop_and_save_detection(img, detection, filename, detection_index):
     
     # Guardar la imagen
     cropped_img_pil.save(save_path)
-    print(f"Imagen guardada: {save_path} - Postura: {posture}")
     
     return posture
 
