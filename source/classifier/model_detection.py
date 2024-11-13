@@ -2,7 +2,7 @@ import os
 import torch
 from torchvision import transforms
 from PIL import Image
-from classes import CowClassifier
+from source.classifier.model_architecture import CowClassifier
 
 os.listdir()
 
