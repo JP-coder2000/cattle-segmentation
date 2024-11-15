@@ -1,56 +1,56 @@
-# Análisis del Comportamiento de Vacas en Espacios de Descanso Utilizando Imágenes Aéreas
+# Analysis of Cow Behavior in Resting Areas Using Aerial Images
 
-## Descripción General del Proyecto
+## Project Overview
 
-Este proyecto tiene como objetivo analizar el comportamiento de vacas lecheras en sus espacios de descanso a través de imágenes aéreas. Utilizamos minería de datos para encontrar patrones y hallazgos significativos respecto al uso de las camas de arena, como el tiempo que pasan descansando, la frecuencia con la que prefieren ciertos espacios, y las posturas adoptadas en las camas.
+This project aims to analyze the behavior of dairy cows in their resting areas through aerial images. We utilize data mining to find patterns and significant insights regarding the use of sand beds, such as how much time cows spend resting, how often they prefer certain spaces, and the postures they adopt in the beds.
 
-## Objetivos del Proyecto
+## Project Objectives
 
-### Objetivos de Negocio
-- **Eficiencia del espacio de descanso**: Mejorar el uso de las camas disponibles para optimizar el descanso de las vacas.
-- **Facilitar la toma de decisiones**: Proporcionar insights que permitan al equipo tomar decisiones más informadas sobre la gestión del espacio de descanso.
-  
-### Preguntas clave:
-1. ¿Cuántas vacas están descansando en las camas?
-2. ¿Cuánto tiempo permanecen en las camas?
-3. ¿Qué camas son más utilizadas que otras?
-4. ¿Cómo se distribuyen las posiciones de las vacas al descansar (paradas o acostadas)?
+### Business Objectives
+- **Resting space efficiency**: Improve the usage of available beds to optimize the cows' rest time.
+- **Facilitate decision-making**: Provide insights that allow the team to make more informed decisions regarding the management of resting spaces.
 
-### Objetivos de Minería de Datos
-- Clasificar imágenes aéreas para identificar si una cama contiene una vaca parada, una vaca acostada o está vacía.
-- Obtener métricas como el tiempo promedio de uso de cama por vaca, el porcentaje de uso de cada cama y el estado de las vacas.
+### Key Questions:
+1. How many cows are resting in the beds?
+2. How long do they stay in the beds?
+3. Which beds are used more frequently than others?
+4. How are the cows distributed when resting (standing or lying down)?
 
-## Metodología
+### Data Mining Objectives
+- Classify aerial images to identify if a bed contains a standing cow, a lying cow, or if it is empty.
+- Obtain metrics such as the average bed usage time per cow, the percentage of usage per bed, and the cows' resting status.
 
-Este proyecto sigue la metodología CRISP-DM (Cross-Industry Standard Process for Data Mining), abarcando las siguientes fases:
+## Methodology
 
-1. **Entendimiento del Negocio**: Definir los objetivos de negocio y las preguntas clave.
-2. **Entendimiento de los Datos**: Recopilar y analizar las imágenes para comprender su estructura y contenido.
-3. **Preparación de los Datos**: Clasificar manualmente las imágenes, etiquetando cada cama según la presencia y postura de las vacas.
-4. **Modelado**: Construir un modelo de clasificación de imágenes utilizando redes neuronales convolucionales (CNN) para detectar si una cama está ocupada o vacía y si la vaca está parada o acostada.
-5. **Evaluación**: Validar el rendimiento del modelo y ajustar los parámetros si es necesario.
-6. **Despliegue**: Generar reportes y conclusiones sobre los patrones de uso de las camas por las vacas.
+This project follows the CRISP-DM methodology (Cross-Industry Standard Process for Data Mining), covering the following phases:
 
-## Estructura del Repositorio
+1. **Business Understanding**: Define business objectives and key questions.
+2. **Data Understanding**: Collect and analyze the images to understand their structure and content.
+3. **Data Preparation**: Manually classify the images, labeling each bed according to the presence and posture of the cows.
+4. **Modeling**: Build an image classification model using Convolutional Neural Networks (CNN) to detect whether a bed is occupied or empty and whether the cow is standing or lying down.
+5. **Evaluation**: Validate the model's performance and fine-tune the parameters if needed.
+6. **Deployment**: Generate reports and conclusions about the cows' bed usage patterns.
+
+## Repository Structure
 
 ```bash
 |-- dataset/
-|   |-- original/                # Contiene un sample de las imágenes aéreas (1920x1080 px).
-|   |-- split/                   # Contiene el sample del dataset transformado y separado en train, test y validation.
-|   |-- transformed/             # Contiene un sample de las imágenes recortadas y clasificadas.
+|   |-- original/                # Contains a sample of the aerial images (1920x1080 px).
+|   |-- split/                   # Contains the sample of the dataset split into train, test, and validation.
+|   |-- transformed/             # Contains a sample of the cropped and classified images.
 |-- source/
-|   |-- classifier.py            # Script clasificador para el dataset original.
-|   |-- data_preparation.ipynb   # Código para la preparación de los datos.
-|   |-- model_training.ipynb     # Notebook con el proceso de entrenamiento del modelo.
-|   |-- analysis.ipynb           # Análisis de resultados y hallazgos.
+|   |-- classifier.py            # Classification script for the original dataset.
+|   |-- data_preparation.ipynb   # Code for data preparation.
+|   |-- model_training.ipynb     # Notebook with the model training process.
+|   |-- analysis.ipynb           # Analysis of results and findings.
 |-- models/
-|   |-- cnn_model.h5             # Modelo de clasificación entrenado (CNN).
+|   |-- cnn_model.h5             # Trained classification model (CNN).
 |-- results/
-|   |-- reports/                 # Reportes con los resultados del análisis.
+|   |-- reports/                 # Reports with analysis results.
 |-- documentation/
-|   |-- business/                # Documentación pertinente de la fase de entendimiento de negocio.
-|   |-- data/                    # Documentación pertinente de la fase de entendimiento y preparación de datos.
-|   |-- modeling/                # Documentación pertinente de la fase de modelado.
-|   |-- evaluation/              # Documentación pertinente de la fase de evaluación.
-|   |-- deployment/              # Documentación pertinente de la fase de despliegue.
-|-- README.md                    # Descripción del proyecto (este archivo).
+|   |-- business/                # Documentation related to the business understanding phase.
+|   |-- data/                    # Documentation related to data understanding and preparation phases.
+|   |-- modeling/                # Documentation related to the modeling phase.
+|   |-- evaluation/              # Documentation related to the evaluation phase.
+|   |-- deployment/              # Documentation related to the deployment phase.
+|-- README.md                    # Project description (this file).
