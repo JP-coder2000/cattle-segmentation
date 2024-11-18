@@ -1,3 +1,19 @@
+# Bounding Box Dataset
+dataset/bounding/original/
+dataset/bounding/split/test/
+dataset/bounding/split/train/
+dataset/bounding/split/validation/
+
+# Classifier Dataset
+dataset/classifier/original/
+dataset/classifier/split/test/
+dataset/classifier/split/train/
+dataset/classifier/split/validation/
+dataset/classifier/transformed/
+
+# Cache
+*.cache
+
 # Mac
 .DS_Store
 
