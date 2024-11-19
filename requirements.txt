@@ -26,4 +26,3 @@ setuptools>=70.0.0 # Snyk vulnerability fix
 psycopg2
 sqlalchemy
 python-dotenv
-opencv-python
