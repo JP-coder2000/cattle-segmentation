@@ -1,11 +1,27 @@
 import os
 import sys
 import torch
+import pathlib
+import platform
 import numpy as np
 from PIL import Image
+from pathlib import Path
 
-import os
-import sys
+# Detectar sistema operativo
+os_name = platform.system()
+
+if os_name == "Windows":
+    # Configuración para Windows
+    temp = pathlib.PosixPath
+    pathlib.PosixPath = pathlib.WindowsPath 
+    print("Sistema operativo: Windows - Configuración de pathlib.Path a WindowsPath")
+elif os_name in ("Linux", "Darwin"):  # Darwin es para macOS
+    # Configuración para sistemas tipo Unix (Linux, macOS)
+    temp = pathlib.PosixPath
+    pathlib.WindowsPath = pathlib.PosixPath
+    print(f"Sistema operativo: {os_name} - Configuración de pathlib.Path a PosixPath")
+else:
+    raise OSError(f"Sistema operativo no soportado: {os_name}")
 
 # Obtener el directorio del notebook
 notebook_dir = os.getcwd()
@@ -87,12 +103,12 @@ def detect_objects(directory):
             
             detections = []
             
-            # Obtener el timestamp actual
-            timestamp = datetime.now()
+            # Obtener el timestamp actual (fecha + hora)
+            processed_at = datetime.now()
             cow_count = len(results_df)
 
             # Añadir la información de la imagen a la base de datos
-            image_id = add_image_info(timestamp, cow_count, filename)
+            image_id = add_image_info(processed_at, cow_count, filename)
             
             # Procesar cada detección
             for idx, detection in results_df.iterrows():
@@ -151,7 +167,6 @@ def detect_objects(directory):
                 )
             
             predictions[filename] = detections
-            results.show()
     
     return predictions
 
