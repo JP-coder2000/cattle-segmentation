@@ -239,14 +239,20 @@ class SandPatternAnalyzer:
 
 # Ejemplo de uso
 if __name__ == "__main__":
-    # Lista de rutas de imágenes
+    # Obtener el directorio actual donde se encuentra el script
+    directorio_actual = os.path.dirname(os.path.abspath(__file__))
+    
+    # Lista de rutas de imágenes relativas
     image_paths = [
-        "/Users/juanpablocabreraquiroga/Downloads/03 Dataset/05 light/morning/3_2024-01-22-15-15-04.jpg",
-        "/Users/juanpablocabreraquiroga/Downloads/03 Dataset/05 light/morning/2_2024-01-30-13-50-04.jpg",
-        "/Users/juanpablocabreraquiroga/Downloads/03 Dataset/05 light/morning/3_2024-02-08-07-05-03.jpg",
-        "/Users/juanpablocabreraquiroga/Downloads/03 Dataset/05 light/morning/3_2024-02-05-18-30-03.jpg",
-        "/Users/juanpablocabreraquiroga/Downloads/03 Dataset/05 light/morning/2_2024-01-31-14-40-04.jpg"
+        os.path.join(directorio_actual, "dataset", "light", "morning", "2_2024-02-22-15-15-04.jpg"),
+        os.path.join(directorio_actual, "dataset", "light", "morning", "2_2024-02-22-15-50-04.jpg"),
+        os.path.join(directorio_actual, "dataset", "light", "morning", "2_2024-02-22-16-05-04.jpg"),
+        os.path.join(directorio_actual, "dataset", "light", "morning", "2_2024-02-22-16-30-04.jpg"),
+        os.path.join(directorio_actual, "dataset", "light", "morning", "2_2024-02-22-16-40-04.jpg")
     ]
+    
+    # Crear la carpeta de salida de manera relativa
+    output_folder = os.path.join(directorio_actual, "resultados_analisis")
     
     # Crear el analizador
     analyzer = SandPatternAnalyzer(image_paths)
@@ -255,4 +261,4 @@ if __name__ == "__main__":
     analyzer.load_images()
     
     # Guardar los resultados
-    analyzer.save_analysis("output_folder")
+    analyzer.save_analysis(output_folder)

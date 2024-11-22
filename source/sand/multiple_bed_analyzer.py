@@ -286,18 +286,29 @@ class SandPatternAnalyzer:
             print(f"\nProcessing category {category}...")
             self.analyze_category(category, output_folder)
 
-# Usage example
-base_input_folder = '/Users/juanpablocabreraquiroga/Downloads/03 Dataset/05 light'
-base_output_folder = '/Users/juanpablocabreraquiroga/Downloads/03 Dataset/05 light/results'
-
-# Process morning images
-morning_analyzer = SandPatternAnalyzer(os.path.join(base_input_folder, 'morning'))
-morning_analyzer.analyze_all_categories(os.path.join(base_output_folder, 'morning'))
-
-# Process afternoon images
-afternoon_analyzer = SandPatternAnalyzer(os.path.join(base_input_folder, 'afternoon'))
-afternoon_analyzer.analyze_all_categories(os.path.join(base_output_folder, 'afternoon'))
-
-# Process night images
-night_analyzer = SandPatternAnalyzer(os.path.join(base_input_folder, 'night'))
-night_analyzer.analyze_all_categories(os.path.join(base_output_folder, 'night'))
+#Ejemplo de uso
+if __name__ == "__main__":
+    # Obtener el directorio actual donde se encuentra el script
+    directorio_actual = os.path.dirname(os.path.abspath(__file__))
+    
+    # Configurar rutas base relativas
+    base_input_folder = os.path.join(directorio_actual, "dataset", "light")
+    base_output_folder = os.path.join(directorio_actual, "dataset", "light", "results")
+    
+    # Procesar imágenes de la mañana
+    morning_input = os.path.join(base_input_folder, "morning")
+    morning_output = os.path.join(base_output_folder, "morning")
+    morning_analyzer = SandPatternAnalyzer(morning_input)
+    morning_analyzer.analyze_all_categories(morning_output)
+    
+    # Procesar imágenes de la tarde
+    afternoon_input = os.path.join(base_input_folder, "afternoon")
+    afternoon_output = os.path.join(base_output_folder, "afternoon")
+    afternoon_analyzer = SandPatternAnalyzer(afternoon_input)
+    afternoon_analyzer.analyze_all_categories(afternoon_output)
+    
+    # Procesar imágenes de la noche
+    night_input = os.path.join(base_input_folder, "night")
+    night_output = os.path.join(base_output_folder, "night")
+    night_analyzer = SandPatternAnalyzer(night_input)
+    night_analyzer.analyze_all_categories(night_output)

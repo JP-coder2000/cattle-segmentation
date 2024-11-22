@@ -72,9 +72,12 @@ def group_images_by_brightness(input_folder, output_base_folder):
         print(f"{category}: {len(images)} images (brightness range: "
               f"{brightness_values[images[0]]:.2f} - {brightness_values[images[-1]]:.2f})")
 
-# Usage example
-input_folder = '/Users/juanpablocabreraquiroga/Downloads/03 Dataset/04 Sand' 
-output_base_folder = '/Users/juanpablocabreraquiroga/Downloads/03 Dataset/05 light' 
+# Obtener el directorio actual donde se encuentra el script
+directorio_actual = os.path.dirname(os.path.abspath(__file__))
 
-# Run the grouping
+# Configurar rutas relativas
+input_folder = os.path.join(directorio_actual, 'dataset', 'sand')
+output_base_folder = os.path.join(directorio_actual, 'dataset', 'light')
+
+# Ejecutar el agrupamiento
 group_images_by_brightness(input_folder, output_base_folder)

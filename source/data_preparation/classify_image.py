@@ -2,12 +2,15 @@ import os
 import cv2
 import shutil
 
-# Carpetas de origen y destino
-source_folder = "fotos_vacas"
+# Obtener el directorio actual donde se encuentra el script
+directorio_actual = os.path.dirname(os.path.abspath(__file__))
+
+# Carpetas de origen y destino (relativas al directorio del script)
+source_folder = os.path.join(directorio_actual, "fotos_vacas")
 output_folders = {
-    "vaca_de_pie": "fotos_vacas/vaca_de_pie",
-    "vaca_acostada": "fotos_vacas/vaca_acostada",
-    "cama_vacia": "fotos_vacas/cama_vacia",
+    "vaca_de_pie": os.path.join(directorio_actual, "fotos_vacas", "vaca_de_pie"),
+    "vaca_acostada": os.path.join(directorio_actual, "fotos_vacas", "vaca_acostada"),
+    "cama_vacia": os.path.join(directorio_actual, "fotos_vacas", "cama_vacia"),
 }
 
 # Crear carpetas de destino si no existen
@@ -16,18 +19,21 @@ for folder in output_folders.values():
 
 # Obtener todas las imágenes de la carpeta de origen
 image_files = [
-    f for f in os.listdir(source_folder) if f.endswith((".png", ".jpg", ".jpeg"))
+    f for f in os.listdir(source_folder) if f.lower().endswith((".png", ".jpg", ".jpeg"))
 ]
 
 # Para rastrear las imágenes movidas y sus ubicaciones anteriores
 history = []
-
 
 # Función para mostrar imágenes con instrucciones y moverlas a la carpeta correspondiente
 def classify_images():
     for image_file in image_files:
         image_path = os.path.join(source_folder, image_file)
         img = cv2.imread(image_path)
+        
+        if img is None:
+            print(f"Error al cargar la imagen {image_file}")
+            continue
 
         # Agregar la guía de teclas a la imagen
         instructions = (
@@ -81,7 +87,6 @@ def classify_images():
 
         # Cerrar la ventana de la imagen
         cv2.destroyAllWindows()
-
 
 if __name__ == "__main__":
     classify_images()
