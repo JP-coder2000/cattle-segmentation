@@ -4,6 +4,9 @@ dataset/bounding/split/test/
 dataset/bounding/split/train/
 dataset/bounding/split/validation/
 
+# YoloV5
+source/yolov5/
+
 # Classifier Dataset
 dataset/classifier/original/
 dataset/classifier/split/test/
