@@ -20,7 +20,7 @@ class ImageInfo(Base):
     __tablename__ = 'image_info'
     id_img_pk = Column(Integer, primary_key=True)
     file_name = Column(String, nullable=False)
-    timestamp = Column(TIMESTAMP, nullable=False)
+    processed_at = Column(TIMESTAMP, nullable=False)
     cow_count = Column(Integer, nullable=False)
 
 class CowDetails(Base):
