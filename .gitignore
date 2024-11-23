@@ -4,15 +4,15 @@ dataset/bounding/split/test/
 dataset/bounding/split/train/
 dataset/bounding/split/validation/
 
-# YoloV5
-source/yolov5/
-
 # Classifier Dataset
 dataset/classifier/original/
 dataset/classifier/split/test/
 dataset/classifier/split/train/
 dataset/classifier/split/validation/
 dataset/classifier/transformed/
+
+# YoloV5
+source/yolov5/
 
 # Cache
 *.cache
