@@ -242,17 +242,12 @@ if __name__ == "__main__":
     # Obtener el directorio actual donde se encuentra el script
     directorio_actual = os.path.dirname(os.path.abspath(__file__))
     
-    # Lista de rutas de imágenes relativas
-    image_paths = [
-        os.path.join(directorio_actual, "dataset", "light", "morning", "2_2024-02-22-15-15-04.jpg"),
-        os.path.join(directorio_actual, "dataset", "light", "morning", "2_2024-02-22-15-50-04.jpg"),
-        os.path.join(directorio_actual, "dataset", "light", "morning", "2_2024-02-22-16-05-04.jpg"),
-        os.path.join(directorio_actual, "dataset", "light", "morning", "2_2024-02-22-16-30-04.jpg"),
-        os.path.join(directorio_actual, "dataset", "light", "morning", "2_2024-02-22-16-40-04.jpg")
-    ]
+    # Declaro la carpeta con imágenes de entrada
+    input_folder = os.path.abspath(os.path.join(directorio_actual, "..", "..", "dataset", "sand", "afternoon"))
+    image_paths = [os.path.join(input_folder, f) for f in os.listdir(input_folder) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
     
     # Crear la carpeta de salida de manera relativa
-    output_folder = os.path.join(directorio_actual, "resultados_analisis")
+    output_folder = os.path.abspath(os.path.join(directorio_actual, "..", "..", "results", "sand"))
     
     # Crear el analizador
     analyzer = SandPatternAnalyzer(image_paths)
