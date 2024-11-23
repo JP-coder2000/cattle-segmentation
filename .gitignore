@@ -12,7 +12,7 @@ dataset/classifier/split/validation/
 dataset/classifier/transformed/
 
 # YoloV5
-source/yolov5/
+source/bounding/yolov5/
 
 # Cache
 *.cache
