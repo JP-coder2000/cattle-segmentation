@@ -1,7 +1,9 @@
 import os
 import torch
-from torchvision import transforms
+import logging
 from PIL import Image
+from datetime import datetime
+from torchvision import transforms
 from classifier.model_architecture import CowClassifier
 
 # Configurar dispositivo
@@ -99,3 +101,35 @@ def calculate_centroid(xmin, ymin, xmax, ymax):
         The centroid of the given coordinates
     """
     return [(xmax + xmin) / 2, (ymax + ymin) / 2]
+
+def setup_logger(log_dir="../logs"):
+    """
+    Configures and returns a logger instance.
+    Logs will be saved in the specified directory with a unique timestamped filename.
+    """
+    # Generar un timestamp único para el archivo de logs
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    # Crear el directorio de logs si no existe
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
+
+    # Configuración del archivo de logs
+    log_file = os.path.join(log_dir, f"execution_logs_{timestamp}.txt")
+
+    # Crear un manejador de archivo con codificación UTF-8
+    file_handler = logging.FileHandler(log_file, encoding="utf-8")
+    file_handler.setLevel(logging.INFO)
+    file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+
+    # Configurar logger raíz
+    logging.basicConfig(level=logging.INFO, handlers=[file_handler])
+
+    # Agregar también salida en consola
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+    logging.getLogger().addHandler(console_handler)
+
+    logging.info(f"Logger configurado correctamente. Archivo de logs: {log_file}")
+    return logging.getLogger()
