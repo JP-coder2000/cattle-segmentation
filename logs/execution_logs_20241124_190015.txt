@@ -1,0 +1,10 @@
+2024-11-24 19:00:15,846 - INFO - Logger configurado correctamente. Archivo de logs: ../logs\execution_logs_20241124_190015.txt
+2024-11-24 19:00:15,846 - INFO - Sistema operativo: Windows - Configuración de pathlib.Path a WindowsPath
+2024-11-24 19:00:20,343 - INFO - Modelo de detección cargado correctamente.
+2024-11-24 19:00:20,456 - INFO - Modelo de clasificación cargado correctamente.
+2024-11-24 19:00:24,532 - ERROR - Error al conectar con la base de datos: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
