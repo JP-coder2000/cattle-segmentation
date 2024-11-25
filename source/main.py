@@ -39,17 +39,13 @@ sys.path.append(project_dir)
 from classifier.model_architecture import CowClassifier
 from database.db_utils import add_image_info, add_cow_detail
 
-# Configuración de directorios
-SAVE_DIR = '../results/classifier/cut_images'
-if not os.path.exists(SAVE_DIR):
-    os.makedirs(SAVE_DIR)
-
 try:
     # Configurar dispositivo
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # Cargar de detección
     model_detection = torch.hub.load('ultralytics/yolov5', 'custom', '../models/bounding/best.pt')
+    logger.info("Modelo de detección cargado correctamente.")
 
     # Cargar modelo de clasificación
     model_classification = CowClassifier().to(device)
@@ -57,6 +53,7 @@ try:
     # Cargar los pesos en el modelo de clasificación
     model_classification.load_state_dict(torch.load('../models/classifier/cow_class_model_state.pth', map_location=device))
     model_classification.eval()
+    logger.info("Modelo de clasificación cargado correctamente.")
 except Exception as e:
     logger.error(f"Error al cargar los modelos: {e}")
     raise e
@@ -80,6 +77,7 @@ try:
     engine = create_engine(DB_URL)
     Session = sessionmaker(bind=engine)
     session = Session()
+    logger.info("Conexión a base de datos incializada.")
 except Exception as e:
     logger.error(f"Error al conectar con la base de datos: {e}")
     raise e
@@ -88,6 +86,7 @@ def detect_objects(directory):
     """
     Performs object detection and posture classification on the specified images
     """
+    logger.info(f"Iniciando procesamiento de detección y clasificación en imágenes del directorio {directory}")
     predictions = {}
     posture_counts = {'vaca_acostada': 0, 'vaca_de_pie': 0, 'clasificación_fallida': 0}
     
@@ -174,6 +173,7 @@ def detect_objects(directory):
         except Exception as e:
             logger.error(f"Error al procesar el archivo {filename}: {str(e)}")
     
+    logger.info("Procesamiento de imágenes completado.")
     return predictions
 
 DIRECTORY = '../dataset/bounding/detect/'
