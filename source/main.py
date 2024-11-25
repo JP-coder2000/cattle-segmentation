@@ -77,7 +77,9 @@ try:
     engine = create_engine(DB_URL)
     Session = sessionmaker(bind=engine)
     session = Session()
-    logger.info("Conexión a base de datos incializada.")
+    # Verificar el estado de la conexión
+    with engine.connect() as connection:
+        logger.info("Conexión a base de datos inicializada.")
 except Exception as e:
     logger.error(f"Error al conectar con la base de datos: {e}")
     raise e
