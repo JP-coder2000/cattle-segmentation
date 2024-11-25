@@ -11,6 +11,9 @@ dataset/classifier/split/train/
 dataset/classifier/split/validation/
 dataset/classifier/transformed/
 
+# YoloV5
+source/bounding/yolov5/
+
 # Cache
 *.cache
 
