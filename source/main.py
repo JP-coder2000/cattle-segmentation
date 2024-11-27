@@ -84,7 +84,7 @@ except Exception as e:
     logger.error(f"Error al conectar con la base de datos: {e}")
     raise e
 
-def detect_objects(directory):
+def detect_objects(directory, conf_threshold=0.25):
     """
     Performs object detection and posture classification on the specified images
     """
@@ -109,12 +109,17 @@ def detect_objects(directory):
                 img_resized_array = np.array(img_resized)
 
                 # Realizar la detección
+                model_detection.conf = 0.20
                 results = model_detection(img_resized_array)
                 results_df = results.pandas().xyxy[0]
                 
                 # Factores de escala
                 scale_x = original_img.shape[1] / 640
                 scale_y = original_img.shape[0] / 320
+
+                # Separar las detecciones por nivel de confianza
+                low_conf_detections = results_df[results_df['confidence'] < conf_threshold]
+                valid_detections = results_df[results_df['confidence'] >= conf_threshold]
                 
                 detections = []
                 
@@ -125,8 +130,8 @@ def detect_objects(directory):
                 # Añadir la información de la imagen a la base de datos
                 image_id = add_image_info(processed_at, cow_count, filename)
                 
-                # Procesar cada detección
-                for idx, detection in results_df.iterrows():
+                # Procesar cada detección valida
+                for idx, detection in valid_detections.iterrows():
                     # Ajustar coordenadas a escala original
                     xmin = detection['xmin'] * scale_x
                     ymin = detection['ymin'] * scale_y
@@ -139,7 +144,7 @@ def detect_objects(directory):
                     posture = crop_and_save_detection(original_img, 
                                                     {'xmin': xmin, 'ymin': ymin, 
                                                     'xmax': xmax, 'ymax': ymax}, 
-                                                    filename, idx)
+                                                    filename, idx, False)
                     
                     # Actualizar contadores
                     posture_counts[posture] += 1
@@ -171,6 +176,14 @@ def detect_objects(directory):
                 logger.info(log_msg)
                 
                 predictions[filename] = detections
+
+                # Generar un log con las detecciones de baja confianza
+                for idx, detection in low_conf_detections.iterrows():
+                    logger.info(
+                        f"Detección menor a {conf_threshold}: "
+                        f"Confianza={detection['confidence']:.2f}, Clase={detection['class']} "
+                        f"en imagen {filename}. Omitiendo registro..."
+                    )
 
         except Exception as e:
             logger.error(f"Error al procesar el archivo {filename}: {str(e)}")
