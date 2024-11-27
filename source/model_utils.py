@@ -54,7 +54,7 @@ def classify_cow_posture(img_pil):
         print(f"Error en la clasificación: {e}")
         return "clasificación_fallida"
     
-def crop_and_save_detection(img, detection, filename, detection_index):
+def crop_and_save_detection(img, detection, filename, detection_index, save):
     """
     Crops the image according to the bounding box coordinates, classifies the cow's posture, and saves it
     """
@@ -78,14 +78,15 @@ def crop_and_save_detection(img, detection, filename, detection_index):
     
     # Clasificar la postura de la vaca
     posture = classify_cow_posture(cropped_img_pil)
-    
-    # Generar nombre del archivo incluyendo la postura
-    base_name = os.path.splitext(filename)[0]
-    save_name = f"{base_name}_detection_{detection_index}_{posture}.jpg"
-    save_path = os.path.join(SAVE_DIR, save_name)
-    
-    # Guardar la imagen
-    cropped_img_pil.save(save_path)
+
+    if save:    
+        # Generar nombre del archivo incluyendo la postura
+        base_name = os.path.splitext(filename)[0]
+        save_name = f"{base_name}_detection_{detection_index}_{posture}.jpg"
+        save_path = os.path.join(SAVE_DIR, save_name)
+        
+        # Guardar la imagen
+        cropped_img_pil.save(save_path)
     
     return posture
 
