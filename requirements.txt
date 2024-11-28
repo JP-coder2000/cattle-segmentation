@@ -17,12 +17,11 @@ ultralytics>=8.2.34  # https://ultralytics.com
 # Plotting --------------------------------------------------------------------
 pandas>=1.1.4
 seaborn>=0.11.0
-matplotlib
 
 # Deploy ----------------------------------------------------------------------
 setuptools>=70.0.0 # Snyk vulnerability fix
 
 # Extras ----------------------------------------------------------------------
-psycopg2
+psycopg2-binary
 sqlalchemy
 python-dotenv
