@@ -11,7 +11,7 @@ def calculate_brightness(image_path):
         if img.mode != 'L':
             img = img.convert('L')
         
-        # Convert to numpy array and calculate mean brightness
+        # Convert to numpy array and calculate mean brightness 
         np_img = np.array(img)
         return np.mean(np_img)
 
