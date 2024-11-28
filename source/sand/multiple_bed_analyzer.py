@@ -292,8 +292,8 @@ if __name__ == "__main__":
     directorio_actual = os.path.dirname(os.path.abspath(__file__))
     
     # Configurar rutas base relativas
-    base_input_folder = os.path.join(directorio_actual, "dataset", "light")
-    base_output_folder = os.path.join(directorio_actual, "dataset", "light", "results")
+    base_input_folder = os.path.abspath(os.path.join(directorio_actual, "..", "..", "dataset", "sand"))
+    base_output_folder = os.path.abspath(os.path.join(directorio_actual, "..", "..", "results", "sand"))
     
     # Procesar imágenes de la mañana
     morning_input = os.path.join(base_input_folder, "morning")

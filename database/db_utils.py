@@ -11,10 +11,10 @@ DATABASE_URL = os.getenv("DB_FULL_URL")
 engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
 
-def add_image_info(timestamp, cow_count, file_name):
+def add_image_info(processed_at, cow_count, file_name):
     session = Session()
     try:
-        new_image = ImageInfo(file_name=file_name, timestamp=timestamp, cow_count=cow_count)
+        new_image = ImageInfo(file_name=file_name, processed_at=processed_at, cow_count=cow_count)
         session.add(new_image)
         session.commit()
         return new_image.id_img_pk
