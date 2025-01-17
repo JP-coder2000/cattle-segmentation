@@ -31,6 +31,17 @@ This project follows the CRISP-DM methodology (Cross-Industry Standard Process f
 5. **Evaluation**: Assess the model's performance using relevant metrics such as accuracy, precision, recall, and F1-score. Fine-tune the model and parameters to improve classification accuracy, especially for beds with unclear or partial occupancy.
 6. **Deployment**: Generate reports that summarize the analysis of cow bed usage, providing insights into which areas are most occupied and how the herd's posture is distributed across the ranch. This information supports decision-making on optimizing resting space management.
 
+## Detections
+
+Check out some real detections of the model down below!
+
+![image_1](./results/bounding/detected/image1.jpg)
+![image_2](./results/bounding/detected/image2.jpg)
+![image_3](./results/bounding/detected/image3.jpg)
+![image_4](./results/bounding/detected/image4.jpg)
+![image_5](./results/bounding/detected/image5.jpg)
+![image_7](./results/bounding/detected/image7.jpg)
+
 ## Repository Structure
 
 ```bash
